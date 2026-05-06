@@ -1,4 +1,8 @@
-export async function apiRequest(url, options = {}) {
+interface IOptions {
+  headers: Record<string, string>;
+}
+
+export async function apiRequest(url: string, options: IOptions) {
   try {
     const res = await fetch(url, {
       headers: { "Content-Type": "application/json", ...options.headers },
