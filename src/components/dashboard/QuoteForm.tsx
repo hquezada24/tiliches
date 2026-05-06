@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import Button from "../Button";
-import styles from "@/styles/QuoteForm.module.css";
 import { apiRequest } from "@/lib/apiRequest";
 import ProductsSkeleton from "@/components/dashboard/ProductsSkeleton";
 
@@ -219,21 +218,21 @@ const QuoteForm = () => {
   }, [submitStatus]);
 
   return (
-    <div className={styles.quotePage}>
-      <div className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.title}>Request a Quote</h1>
-          <p className={styles.subtitle}>
+    <div>
+      <div>
+        <div>
+          <h1>Request a Quote</h1>
+          <p>
             Get a custom quote for your pallet needs. We&apos;ll respond with
             competitive pricing within 24 hours.
           </p>
         </div>
       </div>
 
-      <div className={styles.container}>
-        <div className={styles.formWrapper}>
-          <div className={styles.formSection}>
-            <div className={styles.formHeader}>
+      <div>
+        <div>
+          <div>
+            <div>
               <h2>Tell Us About Your Requirements</h2>
               <p>
                 Fill out the details below for an accurate quote tailored to
@@ -242,17 +241,8 @@ const QuoteForm = () => {
             </div>
 
             {submitStatus === "success" && (
-              <div
-                className={styles.successMessage}
-                role="alert"
-                aria-live="polite"
-              >
-                <svg
-                  className={styles.successIcon}
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
+              <div role="alert" aria-live="polite">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                 </svg>
                 <span>
@@ -263,17 +253,8 @@ const QuoteForm = () => {
             )}
 
             {submitStatus === "error" && (
-              <div
-                className={styles.errorMessage}
-                role="alert"
-                aria-live="assertive"
-              >
-                <svg
-                  className={styles.errorIcon}
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
+              <div role="alert" aria-live="assertive">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                 </svg>
                 <span>
@@ -283,25 +264,20 @@ const QuoteForm = () => {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className={styles.form} noValidate>
+            <form onSubmit={handleSubmit} noValidate>
               {/* Contact Information */}
-              <fieldset className={styles.fieldset}>
-                <legend className={styles.legend}>Contact Information</legend>
+              <fieldset>
+                <legend>Contact Information</legend>
 
-                <div className={styles.formRow}>
-                  <div className={styles.formGroup}>
-                    <label htmlFor="fullName" className={styles.label}>
-                      Full Name *
-                    </label>
+                <div>
+                  <div>
+                    <label htmlFor="fullName">Full Name *</label>
                     <input
                       type="text"
                       id="fullName"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
-                      className={`${styles.input} ${
-                        errors.fullName ? styles.inputError : ""
-                      }`}
                       placeholder="Enter your full name"
                       required
                       aria-required="true"
@@ -312,47 +288,35 @@ const QuoteForm = () => {
                       }
                     />
                     {errors.fullName && (
-                      <span
-                        id="fullName-error"
-                        className={styles.errorText}
-                        role="alert"
-                      >
+                      <span id="fullName-error" role="alert">
                         {errors.fullName}
                       </span>
                     )}
                   </div>
 
-                  <div className={styles.formGroup}>
-                    <label htmlFor="companyName" className={styles.label}>
-                      Company Name
-                    </label>
+                  <div>
+                    <label htmlFor="companyName">Company Name</label>
                     <input
                       type="text"
                       id="companyName"
                       name="companyName"
                       value={formData.companyName}
                       onChange={handleInputChange}
-                      className={styles.input}
                       autoComplete="organization"
                       placeholder="Your Company"
                     />
                   </div>
                 </div>
 
-                <div className={styles.formRow}>
-                  <div className={styles.formGroup}>
-                    <label htmlFor="email" className={styles.label}>
-                      Email Address *
-                    </label>
+                <div>
+                  <div>
+                    <label htmlFor="email">Email Address *</label>
                     <input
                       type="email"
                       id="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className={`${styles.input} ${
-                        errors.email ? styles.inputError : ""
-                      }`}
                       placeholder="your.email@company.com"
                       required
                       aria-required="true"
@@ -363,29 +327,20 @@ const QuoteForm = () => {
                       }
                     />
                     {errors.email && (
-                      <span
-                        id="email-error"
-                        className={styles.errorText}
-                        role="alert"
-                      >
+                      <span id="email-error" role="alert">
                         {errors.email}
                       </span>
                     )}
                   </div>
 
-                  <div className={styles.formGroup}>
-                    <label htmlFor="phone" className={styles.label}>
-                      Phone Number *
-                    </label>
+                  <div>
+                    <label htmlFor="phone">Phone Number *</label>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className={`${styles.input} ${
-                        errors.phone ? styles.inputError : ""
-                      }`}
                       placeholder="(000) 000-0000"
                       required
                       aria-required="true"
@@ -396,11 +351,7 @@ const QuoteForm = () => {
                       }
                     />
                     {errors.phone && (
-                      <span
-                        id="phone-error"
-                        className={styles.errorText}
-                        role="alert"
-                      >
+                      <span id="phone-error" role="alert">
                         {errors.phone}
                       </span>
                     )}
@@ -409,8 +360,8 @@ const QuoteForm = () => {
               </fieldset>
 
               {/* Quote Details */}
-              <fieldset className={styles.fieldset}>
-                <legend className={styles.legend}>Pallet Specifications</legend>
+              <fieldset>
+                <legend>Pallet Specifications</legend>
 
                 {loading ? (
                   <ProductsSkeleton />
@@ -571,8 +522,8 @@ const QuoteForm = () => {
               </fieldset>
 
               {/* Additional Details */}
-              <div className={styles.formGroup}>
-                <label htmlFor="comments" className={styles.label}>
+              <div>
+                <label htmlFor="comments">
                   Additional Requirements or Comments
                 </label>
                 <textarea
@@ -580,7 +531,6 @@ const QuoteForm = () => {
                   name="additionalDetails"
                   value={formData.additionalDetails}
                   onChange={handleInputChange}
-                  className={styles.textarea}
                   rows={4}
                   aria-describedby="comments-hint"
                 />
@@ -589,10 +539,7 @@ const QuoteForm = () => {
                 </span>
               </div>
 
-              <div className={styles.formActions}>
-                {/* <button type="submit" ariaLabel="Submit quote request form">
-                  Submit
-                </button> */}
+              <div>
                 <Button
                   text={isSubmitting ? "Submitting..." : "Submit Quote Request"}
                   type="submit"
@@ -605,30 +552,27 @@ const QuoteForm = () => {
           </div>
 
           {/* Quote Information Sidebar */}
-          <aside
-            className={styles.infoSection}
-            aria-label="Quote process information"
-          >
-            <div className={styles.infoCard}>
-              <h3 className={styles.infoTitle}>Quote Process</h3>
-              <ol className={styles.processSteps} role="list">
-                <li className={styles.step}>
-                  <div className={styles.stepNumber}>1</div>
-                  <div className={styles.stepContent}>
+          <aside aria-label="Quote process information">
+            <div>
+              <h3>Quote Process</h3>
+              <ol role="list">
+                <li>
+                  <div>1</div>
+                  <div>
                     <h4>Submit Request</h4>
                     <p>Fill out the form with your requirements</p>
                   </div>
                 </li>
-                <li className={styles.step}>
-                  <div className={styles.stepNumber}>2</div>
-                  <div className={styles.stepContent}>
+                <li>
+                  <div>2</div>
+                  <div>
                     <h4>Review & Analysis</h4>
                     <p>We analyze your needs and prepare pricing</p>
                   </div>
                 </li>
-                <li className={styles.step}>
-                  <div className={styles.stepNumber}>3</div>
-                  <div className={styles.stepContent}>
+                <li>
+                  <div>3</div>
+                  <div>
                     <h4>Receive Quote</h4>
                     <p>Get your detailed quote within 24 hours</p>
                   </div>
@@ -636,12 +580,11 @@ const QuoteForm = () => {
               </ol>
             </div>
 
-            <div className={styles.infoCard}>
-              <h3 className={styles.infoTitle}>What We Need to Know</h3>
-              <ul className={styles.requirementsList} role="list">
-                <li className={styles.requirement}>
+            <div>
+              <h3>What We Need to Know</h3>
+              <ul role="list">
+                <li>
                   <svg
-                    className={styles.checkIcon}
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     aria-hidden="true"
@@ -650,9 +593,8 @@ const QuoteForm = () => {
                   </svg>
                   <span>Pallet type and specifications</span>
                 </li>
-                <li className={styles.requirement}>
+                <li>
                   <svg
-                    className={styles.checkIcon}
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     aria-hidden="true"
@@ -661,9 +603,8 @@ const QuoteForm = () => {
                   </svg>
                   <span>Quantity needed</span>
                 </li>
-                <li className={styles.requirement}>
+                <li>
                   <svg
-                    className={styles.checkIcon}
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     aria-hidden="true"
@@ -675,13 +616,13 @@ const QuoteForm = () => {
               </ul>
             </div>
 
-            <div className={styles.infoCard}>
-              <h3 className={styles.infoTitle}>Need Help?</h3>
-              <p className={styles.helpText}>
+            <div>
+              <h3>Need Help?</h3>
+              <p>
                 Not sure about specifications? Our team can help you determine
                 the right pallet solution.
               </p>
-              <div className={styles.helpActions}>
+              <div>
                 <Button
                   text="Call Us"
                   ariaLabel="Call QS Pallets for assistance"
