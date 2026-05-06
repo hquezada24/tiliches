@@ -1,5 +1,5 @@
 "use client";
-import ProductsSkeleton from "./dashboard/ProductsSkeleton";
+import ProductsSkeleton from "./ProductsSkeleton";
 import { useState } from "react";
 import { useApiQuery } from "@/hooks/useApiQuery";
 

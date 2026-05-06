@@ -1,7 +1,6 @@
 "use client";
 import Button from "../Button";
 import Image from "next/image";
-import styles from "@/styles/ProductCard.module.css";
 import { useState } from "react";
 
 const ProductCard = ({ product }) => {
@@ -25,29 +24,22 @@ const ProductCard = ({ product }) => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
   return (
-    <div
-      className={styles.productCard}
-      role="article"
-      aria-labelledby={`product-${product.name}-title`}
-    >
-      <div className={styles.productHeader}>
+    <div role="article" aria-labelledby={`product-${product.name}-title`}>
+      <div>
         {/* Product Title */}
-        <div className={styles.productTitle}>
+        <div>
           <h3 id={`product-${product.name}-title`}>{product.name}</h3>
         </div>
 
         {/* Product Price */}
         {product.price && (
-          <p
-            className={styles.productPrice}
-            aria-label={`Price: ${product.price}`}
-          >
+          <p aria-label={`Price: ${product.price}`}>
             {parseInt(product.price) ? `$${product.price}` : product.price}
           </p>
         )}
         {/* Product Image Container */}
         {product.imageURL ? (
-          <div className={styles.imageContainer}>
+          <div>
             <Image
               width={0}
               height={0}
@@ -56,33 +48,21 @@ const ProductCard = ({ product }) => {
               alt={`${product.name} - Image ${currentIndex + 1} of ${
                 images.length
               }`}
-              className={styles.productImage}
             />
 
             {/* Carousel Controls - Only show if multiple images */}
             {!isSingleImage && (
               <>
-                <button
-                  onClick={prevImage}
-                  className={styles.carouselBtn}
-                  aria-label="Previous image"
-                >
+                <button onClick={prevImage} aria-label="Previous image">
                   ‹
                 </button>
-                <button
-                  onClick={nextImage}
-                  className={styles.carouselBtn}
-                  aria-label="Next image"
-                >
+                <button onClick={nextImage} aria-label="Next image">
                   ›
                 </button>
-                <div className={styles.imageIndicators}>
+                <div>
                   {images.map((_, index) => (
                     <span
                       key={index}
-                      className={`${styles.indicator} ${
-                        index === currentIndex ? styles.active : ""
-                      }`}
                       onClick={() => setCurrentIndex(index)}
                       role="button"
                       aria-label={`View image ${index + 1}`}
@@ -104,13 +84,13 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* Product Description */}
-      <div className={styles.productDescription}>
+      <div>
         <p>{product.description}</p>
       </div>
 
       {/* Features */}
       {product.key_features?.length > 0 && (
-        <div className={styles.productFeatures}>
+        <div>
           <h4>Key Features</h4>
           <ul>
             {product.key_features.map((feature, index) => (
