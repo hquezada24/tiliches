@@ -25,7 +25,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   font-family: "DM Sans", sans-serif;
-  background: #1a2e1a;
 }
 
 * {
@@ -44,18 +43,6 @@ a {
 }
 
 @theme {
-  /* --color-forest: #1a2e1a;
-  --color-forest-dark: #0f1c0f;
-  --color-forest-mid: #243824; */
-  /* tea green */
-  --color-forest: #d0f0c0;
-  /* dark green */
-  --color-forest-dark: #006400;
-  /* electric green */
-  --color-forest-mid: #32cd32;
-  --color-lime: #32cd32;
-  --color-lime-light: #bce563;
-  --color-cream: #000000;
   --font-serif: "Playfair Display", "serif";
   --font-sans: "DM Sans", "sans-serif";
   --font-lexend: "Lexend", "serif";

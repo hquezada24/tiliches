@@ -1,31 +1,53 @@
-export const dynamic = "force-dynamic";
 import Hero from "@/components/main/Hero";
+import { FeauredServices } from "./../../components/main/FeauredServices";
+import { FeaturedProjects } from "./../../components/main/FeaturedProjects";
+import { OurProcess } from "./../../components/main/OurProcess";
+import { Testimonials } from "./../../components/main/Testimonials";
+import { Technologies } from "./../../components/main/Technologies";
+import { AboutMe } from "./../../components/main/AboutMe";
 import CTA from "@/components/main/CTA";
-import MarqueeStrip from "@/components/main/MarqueeStrip";
-import Services from "@/components/main/Services";
-import LawnPricing from "@/components/main/LawnPrices";
-import Team from "@/components/main/Team";
+import { Footer } from "@/components/main/Footer";
 
-export default function Home() {
+export default function App() {
+  // Color palette
+  const colors = {
+    background: "#FAFAF9",
+    text: "#111111",
+    primary: "#EA580C",
+    secondary: "#FDBA74",
+  };
+
   return (
-    <div className="bg-forest text-cream font-sans">
-      {/* HERO */}
+    <div
+      className="min-h-screen"
+      style={{ backgroundColor: colors.background }}
+    >
+      {/* Hero Section */}
       <Hero />
 
-      {/* MARQUEE STRIP */}
-      <MarqueeStrip />
+      {/* Featured Services */}
+      <FeauredServices />
 
-      {/* SERVICES */}
-      <Services />
+      {/* Featured Projects */}
+      <FeaturedProjects />
 
-      {/* PRICING */}
-      <LawnPricing />
+      {/* Our Process */}
+      <OurProcess />
 
-      {/* TEAM */}
-      <Team />
+      {/* Testimonials */}
+      <Testimonials />
 
-      {/* CTA */}
+      {/* Technologies */}
+      <Technologies />
+
+      {/* About Me */}
+      <AboutMe />
+
+      {/* Final CTA */}
       <CTA />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
