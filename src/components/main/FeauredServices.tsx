@@ -123,6 +123,7 @@ export function FeauredServices() {
               </h3>
               <p
                 style={{
+                  fontSize: "0.775rem",
                   lineHeight: 1.7,
                   color: `${colors.text}99`,
                 }}

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { Code2 } from "lucide-react";
-import Image from "next/image";
 
 const colors = {
   background: "#FAFAF9",
@@ -55,8 +54,8 @@ const Header = () => {
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            <a
-              href="#home"
+            <Link
+              href="/"
               className="transition-colors"
               style={{ color: `${colors.text}CC` }}
               onMouseEnter={(e) => (e.currentTarget.style.color = colors.text)}
@@ -65,9 +64,9 @@ const Header = () => {
               }
             >
               Home
-            </a>
-            <a
-              href="#services"
+            </Link>
+            <Link
+              href="/services"
               className="transition-colors"
               style={{ color: `${colors.text}CC` }}
               onMouseEnter={(e) => (e.currentTarget.style.color = colors.text)}
@@ -76,9 +75,9 @@ const Header = () => {
               }
             >
               Services
-            </a>
-            <a
-              href="#portfolio"
+            </Link>
+            <Link
+              href="/portfolio"
               className="transition-colors"
               style={{ color: `${colors.text}CC` }}
               onMouseEnter={(e) => (e.currentTarget.style.color = colors.text)}
@@ -87,9 +86,9 @@ const Header = () => {
               }
             >
               Projects
-            </a>
-            <a
-              href="#about"
+            </Link>
+            <Link
+              href="/about"
               className="transition-colors"
               style={{ color: `${colors.text}CC` }}
               onMouseEnter={(e) => (e.currentTarget.style.color = colors.text)}
@@ -98,7 +97,7 @@ const Header = () => {
               }
             >
               About
-            </a>
+            </Link>
           </div>
 
           <button

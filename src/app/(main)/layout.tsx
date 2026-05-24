@@ -4,7 +4,7 @@ import { Header } from "@/components/main/Header";
 import { Footer } from "@/components/main/Footer";
 
 export const metadata = {
-  title: "Quezada Lawn Care",
+  title: "Nexus",
 };
 
 export default function RootLayout({
@@ -17,6 +17,7 @@ export default function RootLayout({
       <Theme>
         <Header />
         <main>{children}</main>
+        <Footer />
       </Theme>
     </>
   );

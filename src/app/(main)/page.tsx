@@ -45,9 +45,6 @@ export default function App() {
 
       {/* Final CTA */}
       <CTA />
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
