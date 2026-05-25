@@ -1,7 +1,15 @@
 "use client";
+import { useState } from "react";
 import colors from "@/styles/colors";
 import { motion } from "motion/react";
-import { ArrowDown, Cpu, Layers, HeartHandshake, Search } from "lucide-react";
+import {
+  ArrowDown,
+  Cpu,
+  Layers,
+  HeartHandshake,
+  Search,
+  ChevronDown,
+} from "lucide-react";
 
 const services = [
   {
@@ -99,6 +107,97 @@ const reasons = [
   },
 ];
 
+const faqs = [
+  {
+    question: "What do you need from me to start?",
+    answer:
+      "Ideally, your logo, brand colors, the text/copy for each page, any photos or images you want to use, and examples of sites you like. If you're missing some of these, that's okay, we can work around it. The more you can share upfront, the smoother and faster the process will be.",
+  },
+  {
+    question: "Can I contact you before ordering?",
+    answer:
+      "Yes! Message me before placing an order so I can understand your requirements and ensure the project is scoped correctly.",
+  },
+  {
+    question: "Can you work with an existing design or Figma file?",
+    answer:
+      "Yes. If you already have a design in Figma, Adobe XD, or even a rough sketch, I can build from it. Just share the file when you reach out so we can discuss the scope and timeline.",
+  },
+  {
+    question: "Will you help me deploy the site?",
+    answer:
+      "Deployment guidance is included with every package. Once the build is ready, I'll walk you through connecting your own GitHub repository to your hosting account (like Vercel or Netlify) and getting your site live. You stay in full control of your infrastructure from day one.",
+  },
+  {
+    question: "What if I need ongoing maintenance or updates?",
+    answer:
+      "I offer post-launch support and monthly maintenance packages to keep your website fast, secure, and up-to-date. If you need ad-hoc updates, I'm also available for hourly work.",
+  },
+  {
+    question: "Do you offer revisions?",
+    answer:
+      "Yes, all projects include revision rounds during the design and development phases to ensure you are 100% satisfied with the final result before launch.",
+  },
+];
+
+const FAQItem = ({
+  question,
+  answer,
+}: {
+  question: string;
+  answer: string;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className="border-b transition-all duration-300"
+      style={{ borderColor: `${colors.text}14` }}
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full py-6 flex justify-between items-center text-left gap-4 group"
+      >
+        <span
+          style={{
+            fontSize: "1.125rem",
+            fontWeight: 600,
+            color: colors.text,
+          }}
+          className="transition-colors duration-300 group-hover:text-[#EA580C]"
+        >
+          {question}
+        </span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+          style={{ color: colors.primary }}
+          className="shrink-0"
+        >
+          <ChevronDown className="w-5 h-5" />
+        </motion.div>
+      </button>
+      <motion.div
+        initial={false}
+        animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="overflow-hidden"
+      >
+        <p
+          className="pb-6"
+          style={{
+            fontSize: "1rem",
+            lineHeight: 1.6,
+            color: `${colors.text}99`,
+          }}
+        >
+          {answer}
+        </p>
+      </motion.div>
+    </div>
+  );
+};
+
 const ServicesPage = () => {
   return (
     <div
@@ -193,6 +292,29 @@ const ServicesPage = () => {
               >
                 Choose your service
                 <ArrowDown className="w-5 h-5" />
+              </button>
+
+              <button
+                className="px-8 py-4 rounded-lg border transition-all"
+                style={{
+                  borderColor: `${colors.text}33`,
+                  color: colors.text,
+                  fontWeight: 600,
+                  fontSize: "1.125rem",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = `${colors.text}08`)
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = "transparent")
+                }
+                onClick={() =>
+                  document.getElementById("faq").scrollIntoView({
+                    behavior: "smooth",
+                  })
+                }
+              >
+                Read FAQs
               </button>
             </div>
           </motion.div>
@@ -406,6 +528,59 @@ const ServicesPage = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section
+        id="faq"
+        className="py-32 relative border-t"
+        style={{ borderColor: `${colors.text}0A` }}
+      >
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2
+              style={{
+                fontSize: "3rem",
+                fontWeight: 700,
+                color: colors.text,
+              }}
+              className="mb-4"
+            >
+              Frequently Asked Questions
+            </h2>
+            <p
+              style={{
+                fontSize: "1.125rem",
+                color: `${colors.text}99`,
+              }}
+              className="max-w-2xl mx-auto"
+            >
+              Have questions about my services, design files, or deployment?
+              Find answers here.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-2"
+          >
+            {faqs.map((faq, index) => (
+              <FAQItem
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+              />
+            ))}
+          </motion.div>
         </div>
       </section>
     </div>
