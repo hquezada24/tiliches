@@ -6,7 +6,6 @@ import { Testimonials } from "./../../components/main/Testimonials";
 import { Technologies } from "./../../components/main/Technologies";
 import { AboutMe } from "./../../components/main/AboutMe";
 import CTA from "@/components/main/CTA";
-import { Footer } from "@/components/main/Footer";
 
 export default function App() {
   // Color palette

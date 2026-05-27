@@ -77,7 +77,7 @@ const Header = () => {
               Services
             </Link>
             <Link
-              href="/portfolio"
+              href="/projects"
               className="transition-colors"
               style={{ color: `${colors.text}CC` }}
               onMouseEnter={(e) => (e.currentTarget.style.color = colors.text)}
