@@ -9,7 +9,13 @@ import {
   HeartHandshake,
   Search,
   ChevronDown,
+  Shield,
+  Settings,
+  Server,
+  Star,
+  CheckCircle2,
 } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   {
@@ -25,6 +31,7 @@ const services = [
       "Contact Form",
     ],
     price: "$900",
+    link: "landing-page",
   },
   {
     id: 2,
@@ -38,6 +45,7 @@ const services = [
       "Mobile optimization",
     ],
     price: "$1200",
+    link: "business-website",
   },
   {
     id: 3,
@@ -51,6 +59,7 @@ const services = [
       "Custom integrations",
     ],
     price: "$1800",
+    link: "dashboard",
   },
   {
     id: 4,
@@ -64,6 +73,7 @@ const services = [
       "Scalable architecture",
     ],
     price: "$1500",
+    link: "api",
   },
   {
     id: 5,
@@ -76,7 +86,59 @@ const services = [
       "Performance optimization",
       "Bug fixes",
     ],
-    price: "$200 / month or $50 / hour",
+    price: "$200 / month",
+    link: "maintenance",
+  },
+];
+
+const hostingOptions = [
+  {
+    id: 1,
+    title: "Managed Hosting",
+    badge: "Recommended",
+    icon: <Shield className="w-7 h-7" />,
+    description:
+      "We take care of everything — deployment, updates, monitoring, and maintenance — so you can focus on running your business.",
+    features: [
+      "Automatic updates and security patches",
+      "Performance monitoring",
+      "Priority support",
+      "Regular backups",
+    ],
+    pricing: "Monthly fee",
+    highlight: true,
+  },
+  {
+    id: 2,
+    title: "Customer-Owned Hosting",
+    badge: null,
+    icon: <Settings className="w-7 h-7" />,
+    description:
+      "You own your hosting account and have full control. We set up and deploy your website, then hand over the keys.",
+    features: [
+      "Full ownership of your infrastructure",
+      "One-time setup and deployment",
+      "You keep your domain and data",
+      "Documentation included",
+    ],
+    pricing: "One-time setup fee",
+    highlight: false,
+  },
+  {
+    id: 3,
+    title: "Dedicated Infrastructure",
+    badge: null,
+    icon: <Server className="w-7 h-7" />,
+    description:
+      "For larger businesses that need custom infrastructure, dedicated resources, or advanced configurations.",
+    features: [
+      "Custom server setup",
+      "Advanced security configurations",
+      "Tailored to your traffic needs",
+      "Dedicated support channel",
+    ],
+    pricing: "Custom quote",
+    highlight: false,
   },
 ];
 
@@ -124,9 +186,9 @@ const faqs = [
       "Yes. If you already have a design in Figma, Adobe XD, or even a rough sketch, I can build from it. Just share the file when you reach out so we can discuss the scope and timeline.",
   },
   {
-    question: "Will you help me deploy the site?",
+    question: "How does hosting work?",
     answer:
-      "Deployment guidance is included with every package. Once the build is ready, I'll walk you through connecting your own GitHub repository to your hosting account (like Vercel or Netlify) and getting your site live. You stay in full control of your infrastructure from day one.",
+      "I offer three hosting options to fit your needs. With Managed Hosting, I handle everything — deployment, updates, and monitoring — for a monthly fee. With Customer-Owned Hosting, you own your hosting account and I deploy your site for a one-time setup fee. For larger businesses, I offer Dedicated Infrastructure with a custom quote. In every case, you own your domain and retain full control.",
   },
   {
     question: "What if I need ongoing maintenance or updates?",
@@ -418,7 +480,8 @@ const ServicesPage = () => {
                   >
                     {service.price}
                   </span>
-                  <span
+                  <Link
+                    href={`services/${service.link}`}
                     className="px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 group-hover:bg-[#EA580C] group-hover:text-white"
                     style={{
                       backgroundColor: `${colors.primary}10`,
@@ -426,6 +489,142 @@ const ServicesPage = () => {
                     }}
                   >
                     Get Started
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Hosting Options Section */}
+      <section
+        id="hosting"
+        className="py-32 relative border-t"
+        style={{ borderColor: `${colors.text}0A` }}
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2
+              style={{
+                fontSize: "3rem",
+                fontWeight: 700,
+                color: colors.text,
+              }}
+              className="mb-4"
+            >
+              Hosting Options
+            </h2>
+            <p
+              style={{
+                fontSize: "1.125rem",
+                color: `${colors.text}99`,
+              }}
+              className="max-w-2xl mx-auto"
+            >
+              Choose how your website is hosted. No matter which option you
+              pick, you always own your domain and your data.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {hostingOptions.map((option, index) => (
+              <motion.div
+                key={option.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{
+                  y: -10,
+                  boxShadow: "0 12px 30px rgba(0, 0, 0, 0.08)",
+                  transition: { duration: 0.2 },
+                }}
+                className="p-8 rounded-2xl border text-left cursor-pointer group flex flex-col"
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  borderColor: option.highlight
+                    ? colors.primary
+                    : `${colors.text}14`,
+                  borderWidth: option.highlight ? "2px" : "1px",
+                  boxShadow: option.highlight
+                    ? `0 4px 20px ${colors.primary}15`
+                    : "0 4px 20px rgba(0, 0, 0, 0.04)",
+                }}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center"
+                    style={{
+                      backgroundColor: option.highlight
+                        ? `${colors.primary}10`
+                        : `${colors.text}08`,
+                      color: option.highlight
+                        ? colors.primary
+                        : `${colors.text}80`,
+                    }}
+                  >
+                    {option.icon}
+                  </div>
+                  {option.badge && (
+                    <span
+                      className="flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold"
+                      style={{
+                        backgroundColor: `${colors.primary}10`,
+                        color: colors.primary,
+                      }}
+                    >
+                      <Star className="w-3 h-3" />
+                      {option.badge}
+                    </span>
+                  )}
+                </div>
+
+                <h3
+                  className="text-xl font-bold mb-2"
+                  style={{ color: colors.text }}
+                >
+                  {option.title}
+                </h3>
+
+                <p
+                  className="text-sm mb-6"
+                  style={{ color: `${colors.text}99`, lineHeight: 1.6 }}
+                >
+                  {option.description}
+                </p>
+
+                <ul className="space-y-2.5 mb-8 flex-1">
+                  {option.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2 text-sm"
+                      style={{ color: `${colors.text}CC` }}
+                    >
+                      <CheckCircle2
+                        className="w-4 h-4 shrink-0 mt-0.5"
+                        style={{ color: colors.primary }}
+                      />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <div
+                  className="pt-5 border-t"
+                  style={{ borderColor: `${colors.text}0A` }}
+                >
+                  <span
+                    className="text-sm font-semibold"
+                    style={{ color: colors.primary }}
+                  >
+                    {option.pricing}
                   </span>
                 </div>
               </motion.div>
@@ -433,6 +632,7 @@ const ServicesPage = () => {
           </div>
         </div>
       </section>
+
       <section className="py-32 relative">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
