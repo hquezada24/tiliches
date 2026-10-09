@@ -169,7 +169,7 @@ const Footer = () => {
           style={{ borderColor: `${colors.text}14` }}
         >
           <p style={{ color: `${colors.text}66` }}>
-            © {currentYear} Freelance Web Developer. All rights reserved.
+            © {currentYear} Hugo Quezada Software SAS de CV. Todos los derechos reservados.
           </p>
           <div className="flex gap-6">
             <a

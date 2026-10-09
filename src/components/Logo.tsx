@@ -15,8 +15,8 @@ const Logo = ({ border = false }) => {
         priority
       />
       <div>
-        <div className="m-0 text-[1.2rem] font-extrabold leading-none tracking-[-0.02em] text-white">
-          QS Pallets
+        <div className="m-0 text-[1.2rem] font-extrabold leading-none tracking-[-0.02em] text-text">
+          Hugo Quezada Software
         </div>
       </div>
     </div>

@@ -17,10 +17,11 @@ export default function LogoutButton() {
 
   return (
     <button
-      className="flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg
-             text-green-200 text-sm font-medium
-             hover:bg-white/10 hover:text-white
-             active:bg-white/20
+      className="flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg bg-primary
+            [boxShadow: 0 4px 12px rgba(234, 88, 12, 0.2)]
+             text-white text-sm font-medium
+             hover:bg-secondary hover:text-primary
+             active:bg-primary
              transition-colors duration-150"
       onClick={handleLogout}
     >
@@ -37,7 +38,7 @@ export default function LogoutButton() {
         <polyline points="16 17 21 12 16 7" />
         <line x1="21" y1="12" x2="9" y2="12" />
       </svg>
-      Log Out
+      Cerrar Sesión
     </button>
   );
 }

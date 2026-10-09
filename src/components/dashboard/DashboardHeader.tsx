@@ -21,7 +21,7 @@ const DashboardHeader = ({ isOpen }) => {
     },
   ]);
 
-  const today = new Date().toLocaleDateString("en-US", {
+  const today = new Date().toLocaleDateString("es-US", {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -61,25 +61,25 @@ const DashboardHeader = ({ isOpen }) => {
       `}</style>
 
       <header
-        className={`header-font max-[680px]:min-h-[10vh] w-full sticky top-0 z-40 border-b border-emerald-800/30 bg-linear-to-r from-[#1e5631] via-[#1f7a35] to-[#228b22] shadow-lg `}
+        className={`header-font max-[680px]:min-h-[10vh] w-full sticky top-0 z-40 bg-background`}
       >
         <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.35),transparent_45%),radial-gradient(circle_at_80%_50%,rgba(255,255,255,0.2),transparent_35%)]" />
-        <div className="relative flex flex-col max-[680px]:justify-end gap-4 px-8 py-6 items-end lg:px-10 xl:px-12 md:flex-row lg:items-center lg:justify-evenly lg:gap-5">
+        <div className="relative flex flex-col max-[680px]:justify-end gap-4 px-8 py-6 items-end lg:px-10 xl:px-12 md:flex-row lg:items-center lg:justify-end lg:gap-5">
           {/* Left — greeting */}
           <div className="sm:flex flex-col min-w-0 max-[680px]:hidden">
-            <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-100/85">
+            {/* <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-100/85">
               {today}
-            </p>
-            <h1 className="logo-font truncate text-xl font-extrabold leading-tight tracking-tight text-white sm:text-2xl">
-              Welcome back,{" "}
+            </p> */}
+            {/* <h1 className="logo-font truncate text-xl font-extrabold leading-tight tracking-tight text-white sm:text-2xl">
+              Bienvenido de vuelta,{" "}
               <span className="text-emerald-200">
                 {status !== "loading" && session?.user?.name}
               </span>{" "}
               👋
-            </h1>
-            <p className="mt-1 text-sm font-medium text-emerald-100/80">
+            </h1> */}
+            {/* <p className="mt-1 text-sm font-medium text-emerald-100/80">
               Here&apos;s what&apos;s happening with your operations today.
-            </p>
+            </p> */}
           </div>
 
           {/* Right — actions */}
@@ -90,7 +90,7 @@ const DashboardHeader = ({ isOpen }) => {
             <div className="relative hidden sm:block">
               <button
                 onClick={() => setShowNotifications(!showNotifications)}
-                className="relative flex h-11 w-11 items-center justify-center rounded-xl border border-white/30 bg-white/12 text-emerald-50 hover:border-white/55 hover:bg-white/20 transition-all duration-200"
+                className="relative flex h-11 w-11 items-center justify-center rounded-xl border border-gray bg-gray text-primary hover:border-primary/55 hover:bg-primary/20 transition-all duration-200"
                 aria-label="Toggle notifications"
               >
                 <svg
@@ -106,7 +106,7 @@ const DashboardHeader = ({ isOpen }) => {
                   <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                 </svg>
                 {unreadCount > 0 && (
-                  <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-emerald-300 px-1 text-[10px] font-bold leading-none text-emerald-900">
+                  <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-yellow-100 px-1 text-[10px] font-bold leading-none text-emerald-900">
                     {unreadCount}
                   </span>
                 )}
@@ -114,14 +114,14 @@ const DashboardHeader = ({ isOpen }) => {
 
               {/* Dropdown */}
               {showNotifications && (
-                <div className="notif-dropdown absolute right-0 z-50 mt-2 w-72 overflow-hidden rounded-2xl border border-emerald-200 bg-white shadow-2xl">
-                  <div className="flex items-center justify-between border-b border-emerald-100 bg-emerald-50/80 px-4 py-3">
-                    <span className="logo-font text-sm font-bold text-emerald-900">
+                <div className="notif-dropdown absolute right-0 z-50 mt-2 w-72 overflow-hidden rounded-2xl border border-primary bg-white shadow-2xl">
+                  <div className="flex items-center justify-between border-b border-primary bg-background px-4 py-3">
+                    <span className="logo-font text-sm font-bold text-primary">
                       Notifications
                     </span>
                     <button
                       onClick={markAllRead}
-                      className="text-xs font-semibold text-emerald-700 hover:underline"
+                      className="text-xs font-semibold text-primary hover:underline"
                       type="button"
                     >
                       Mark all read
@@ -131,11 +131,11 @@ const DashboardHeader = ({ isOpen }) => {
                     {notifications.map((n) => (
                       <li
                         key={n.id}
-                        className={`cursor-pointer border-b border-gray-100 px-4 py-3 last:border-0 transition-colors duration-150 hover:bg-gray-50 ${n.unread ? "bg-emerald-50/60" : ""}`}
+                        className={`cursor-pointer border-b border-gray-100 px-4 py-3 last:border-0 transition-colors duration-150 hover:bg-orange-50/80 ${n.unread ? "bg-background" : "text-gray"}`}
                       >
                         <div className="flex items-start gap-3">
                           <div
-                            className={`mt-1 h-2 w-2 shrink-0 rounded-full ${n.unread ? "bg-emerald-500" : "bg-gray-300"}`}
+                            className={`mt-1 h-2 w-2 shrink-0 rounded-full ${n.unread ? "bg-primary" : "bg-gray-300"}`}
                           />
                           <div>
                             <p className="text-sm font-medium leading-snug text-gray-700">
@@ -191,7 +191,7 @@ const DashboardHeader = ({ isOpen }) => {
                   </span>
                 </button>
 
-                <nav
+                {/* <nav
                   className={`mobileNav ${isMenuOpen ? "mobileNavOpen" : ""}`}
                   id="mobile-navigation"
                   aria-label="Mobile navigation"
@@ -303,7 +303,7 @@ const DashboardHeader = ({ isOpen }) => {
                       </Link>
                     </li>
                   </ul>
-                </nav>
+                </nav> */}
               </div>
             </div>
           </div>

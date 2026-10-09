@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
+import colors from "@/styles/colors";
 
 export default function Login() {
   const [form, setForm] = useState({
@@ -61,21 +62,21 @@ export default function Login() {
       `}</style>
       <div className="min-h-screen flex">
         {/* LEFT SIDE - Branding */}
-        <div className="hidden md:flex w-1/2 bg-green-700 text-white flex-col justify-center items-center p-12">
+        <div className="hidden md:flex w-1/2 text-white flex-col justify-center items-center p-12" style={{ backgroundColor: colors.primary }}>
           <div className="max-w-md">
             <div className="login-logo flex">
               <Image
-                src="/qspallets.png"
+                src="/logo.png"
                 alt=""
                 width={100}
                 height={100}
                 sizes="100vw"
                 className="login-logo-img m-0"
               />
-              <h1 className="login-logo-txt">QS Pallets</h1>
+              <h1 className="login-logo-txt">Hugo Quezada Software</h1>
             </div>
             <p className="text-green-100 text-lg py-7">
-              Manage inventory, quotes, and orders from one central dashboard.
+              Administra cotizaciones y ordenes desde un panel central.
             </p>
           </div>
         </div>
@@ -84,15 +85,14 @@ export default function Login() {
         <div className="flex w-full md:w-1/2 justify-center items-center bg-gray-50 p-8">
           <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
             <h2 className="text-2xl font-semibold text-gray-800 mb-2">
-              Welcome back
+              ¡Bienvenido de regreso!
             </h2>
-            <p className="text-gray-500 mb-6">Sign in to your dashboard</p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Email */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email
+                  Correo electrónico
                 </label>
                 <input
                   type="email"
@@ -100,15 +100,15 @@ export default function Login() {
                   value={form.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-600 focus:outline-none transition"
-                  placeholder="admin@qspallets.com"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:outline-none transition"
+                  placeholder="admin@software.com"
                 />
               </div>
 
               {/* Password */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Password
+                  Contraseña
                 </label>
                 <input
                   type="password"
@@ -116,7 +116,7 @@ export default function Login() {
                   value={form.password}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-600 focus:outline-none transition"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:outline-none transition"
                   placeholder="••••••••"
                 />
               </div>
@@ -124,14 +124,15 @@ export default function Login() {
               {/* Button */}
               <button
                 type="submit"
-                className="w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-3 rounded-xl transition duration-200 shadow-md"
+                className="w-full bg-primary hover:bg-secondary text-white font-semibold py-3 rounded-xl transition duration-200 shadow-md"
+
               >
-                Sign In
+                Iniciar Sesión
               </button>
             </form>
 
             <div className="mt-6 text-center text-sm text-gray-500">
-              © {new Date().getFullYear()} QS Pallets
+              © {new Date().getFullYear()} Hugo Quezada Software
             </div>
           </div>
         </div>
